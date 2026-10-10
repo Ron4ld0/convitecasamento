@@ -1,0 +1,1053 @@
+/* ==========================================================================
+   CONVITE DE CASAMENTO DIGITAL — LAURA & GUILHERME
+   Identidade Visual Fiel ao Convite Original
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variáveis e Design Tokens (Extraídos da Análise do PDF)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Original do Documento */
+  --color-bg-base: #f9f8f5;            /* Fundo geral da página */
+  --color-card-bg: #efede7;            /* Fundo exato do convite (#efede7 do PDF) */
+  --color-card-inner: #f5f4ee;         /* Variação sutil interna */
+  --color-text-main: #343733;          /* Grafite profundo clássico (#343733 do PDF) */
+  --color-text-muted: #666963;         /* Texto secundário elegante */
+  --color-text-light: #8e908a;         /* Detalhes suaves */
+  --color-accent-gold: #9e8a68;        /* Dourado champanhe fosco para acentos */
+  --color-accent-gold-dark: #827050;   /* Dourado escuro para hover */
+  --color-accent-gold-soft: rgba(158, 138, 104, 0.15);
+  --color-border-subtle: #dedad0;      /* Linhas finas de moldura */
+  --color-white: #ffffff;
+  --color-success: #3c7653;
+  --color-error: #a84242;
+
+  /* Tipografia Original */
+  --font-serif: 'Cormorant Garamond', 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --font-script: 'Alex Brush', cursive;
+  --font-names: 'Alex Brush', 'Pinyon Script', cursive;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Dimensões e Espaçamentos */
+  --container-max-w: 780px;
+  --card-radius: 12px;
+  --card-shadow: 0 16px 48px -12px rgba(52, 55, 51, 0.12), 0 4px 16px -4px rgba(52, 55, 51, 0.06);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset e Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(239, 237, 231, 0.9) 0%, transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(222, 218, 208, 0.4) 0%, transparent 40%);
+}
+
+/* --------------------------------------------------------------------------
+   3. Barra de Ações Flutuante / Header Discreto
+   -------------------------------------------------------------------------- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(249, 248, 245, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(222, 218, 208, 0.6);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: var(--color-text-main);
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-btn {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-main);
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+}
+
+.nav-btn.primary {
+  background-color: var(--color-text-main);
+  color: var(--color-card-bg);
+}
+
+.nav-btn.primary:hover {
+  background-color: var(--color-accent-gold-dark);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   4. Estrutura Principal
+   -------------------------------------------------------------------------- */
+.main-content {
+  max-width: var(--container-max-w);
+  margin: 0 auto;
+  padding: 80px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Cartão Principal do Convite — Réplica Fiel do PDF
+   -------------------------------------------------------------------------- */
+.invitation-card-wrapper {
+  perspective: 1000px;
+  margin: 10px auto 0;
+  width: 100%;
+}
+
+.invitation-card {
+  position: relative;
+  background-color: var(--color-card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 70px 48px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: var(--transition-smooth);
+}
+
+/* Moldura interna clássica com linha dupla (passepartout) */
+.card-frame {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  border: 1px solid rgba(158, 138, 104, 0.28);
+  border-radius: calc(var(--card-radius) - 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-frame::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(158, 138, 104, 0.15);
+  border-radius: calc(var(--card-radius) - 6px);
+}
+
+/* Monogramas Originais Vetoriais em Marca d'Água (Extraídos do PDF) */
+.monogram-watermark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
+  transition: opacity 0.5s ease;
+}
+
+/* Monograma L: Superior Esquerdo */
+.monogram-l {
+  top: -20px;
+  left: -20px;
+  width: 420px;
+  height: 420px;
+  transform: rotate(-12deg);
+}
+
+/* Monograma G: Inferior Direito */
+.monogram-g {
+  bottom: -40px;
+  right: -40px;
+  width: 440px;
+  height: 440px;
+  transform: rotate(-8deg);
+}
+
+/* Conteúdo Textual do Cartão */
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bloco Superior (Alinhado à Direita, exatamente como no PDF) */
+.card-header-block {
+  text-align: right;
+  margin-bottom: 50px;
+  padding-left: 20%;
+}
+
+.invitation-eyebrow {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.couple-names {
+  font-family: var(--font-names);
+  color: var(--color-text-main);
+  line-height: 1.05;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.couple-names .name-line {
+  font-size: 4.8rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.couple-names .ampersand {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 3.2rem;
+  font-weight: 300;
+  margin-left: 8px;
+}
+
+/* Bloco Inferior (Alinhado à Esquerda, exatamente como no PDF) */
+.card-footer-block {
+  text-align: left;
+  margin-top: 20px;
+  padding-right: 20%;
+}
+
+.event-date-time {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  letter-spacing: 5px;
+  color: var(--color-text-main);
+  font-weight: 400;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.date-time-bullet {
+  font-size: 1.2rem;
+  color: var(--color-accent-gold);
+}
+
+.venue-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.invitation-closing {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   6. Botões Rápidos Abaixo do Convite
+   -------------------------------------------------------------------------- */
+.quick-cta-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.btn-luxury.gold {
+  background-color: var(--color-text-main);
+  color: var(--color-card-bg);
+  box-shadow: 0 4px 18px rgba(52, 55, 51, 0.2);
+}
+
+.btn-luxury.gold:hover {
+  background-color: var(--color-accent-gold-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(130, 112, 80, 0.3);
+}
+
+.btn-luxury.outline {
+  background-color: transparent;
+  color: var(--color-text-main);
+  border-color: var(--color-border-subtle);
+}
+
+.btn-luxury.outline:hover {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-accent-gold);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   7. Cronômetro Regressivo Minimalista
+   -------------------------------------------------------------------------- */
+.countdown-section {
+  background: var(--color-card-bg);
+  border-radius: var(--card-radius);
+  padding: 32px 24px;
+  border: 1px solid rgba(222, 218, 208, 0.7);
+  box-shadow: 0 6px 20px rgba(52, 55, 51, 0.04);
+  text-align: center;
+}
+
+.countdown-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 14px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(222, 218, 208, 0.8);
+}
+
+.countdown-number {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   8. Seção de Informações do Evento
+   -------------------------------------------------------------------------- */
+.section-wrapper {
+  background: var(--color-card-bg);
+  border-radius: var(--card-radius);
+  padding: 44px 36px;
+  border: 1px solid rgba(222, 218, 208, 0.8);
+  box-shadow: var(--card-shadow);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.section-subtitle {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--color-accent-gold-dark);
+  display: block;
+  line-height: 1.1;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+  margin: 14px auto 0;
+}
+
+/* Cards de Detalhes em Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 28px 22px;
+  border: 1px solid rgba(222, 218, 208, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.detail-card:hover {
+  transform: translateY(-3px);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(52, 55, 51, 0.06);
+}
+
+.detail-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--color-text-main);
+}
+
+.detail-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-text-main);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.detail-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  margin-bottom: 10px;
+}
+
+.detail-card-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.detail-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-small {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.btn-small.dark {
+  background: var(--color-text-main);
+  color: #fff;
+}
+
+.btn-small.dark:hover {
+  background: var(--color-accent-gold-dark);
+}
+
+.btn-small.outline {
+  border: 1px solid var(--color-text-main);
+  color: var(--color-text-main);
+}
+
+.btn-small.outline:hover {
+  background: var(--color-text-main);
+  color: #fff;
+}
+
+/* Card de Valores e Pacotes Centralizado */
+.pricing-card {
+  grid-column: 1 / -1;
+  max-width: 420px;
+  width: 100%;
+  justify-self: center;
+  margin: 0 auto;
+}
+
+.price-list {
+  width: 100%;
+  margin: 10px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price-item {
+  background: rgba(239, 237, 231, 0.55);
+  border: 1px solid rgba(222, 218, 208, 0.8);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-item.stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.price-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.price-item-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.price-item-tag {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.price-sub-options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  border-top: 1px dashed rgba(222, 218, 208, 0.9);
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.price-sub-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.price-sub-row strong {
+  color: var(--color-text-main);
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+}
+
+.price-included-box {
+  background: var(--color-card-bg);
+  border: 1px dashed var(--color-accent-gold);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--color-text-main);
+  line-height: 1.45;
+  width: 100%;
+  text-align: center;
+}
+
+.price-included-box strong {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  margin-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Formulário de Confirmação de Presença (RSVP)
+   -------------------------------------------------------------------------- */
+.rsvp-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.rsvp-intro {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+/* Aviso de Modo de Simulação (Amigável para Testes) */
+.simulation-badge {
+  display: none; /* Ativado via JS quando a URL for placeholder */
+  background: #fdf8e6;
+  border: 1px solid #ebd9a4;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 0.82rem;
+  color: #7d6320;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.simulation-badge strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.88rem;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.form-label .required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  background: #ffffff;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--color-accent-gold);
+  box-shadow: 0 0 0 3px var(--color-accent-gold-soft);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #a5a7a1;
+}
+
+/* Radio Cards Elegantes para Confirmação Sim/Não */
+.radio-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.radio-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-card-content {
+  background: #ffffff;
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: 8px;
+  padding: 16px 14px;
+  text-align: center;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.radio-icon {
+  font-size: 1.4rem;
+}
+
+.radio-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.radio-subtitle {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content {
+  border-color: var(--color-text-main);
+  background-color: #faf9f6;
+  box-shadow: 0 4px 12px rgba(52, 55, 51, 0.08);
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content .radio-title {
+  color: var(--color-text-main);
+}
+
+/* Área de Acompanhantes Dinâmicos */
+.companions-section {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 18px 16px;
+  border: 1px dashed var(--color-border-subtle);
+  margin-top: 14px;
+}
+
+.companion-field-item {
+  margin-top: 12px;
+}
+
+.companion-field-item label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Botão de Envio */
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--color-text-main);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(52, 55, 51, 0.2);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--color-accent-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(130, 112, 80, 0.25);
+}
+
+.btn-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner de Carregamento */
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Estados de Feedback (Sucesso / Erro) */
+.form-feedback {
+  display: none;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  margin-top: 24px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.form-feedback.success {
+  background: #f1f7f3;
+  border: 1px solid #b7dcbe;
+  color: var(--color-success);
+}
+
+.form-feedback.error {
+  background: #fcf2f2;
+  border: 1px solid #f1c3c3;
+  color: var(--color-error);
+}
+
+.feedback-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feedback-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   10. Encerramento / Rodapé Afetivo
+   -------------------------------------------------------------------------- */
+.footer-farewell {
+  text-align: center;
+  padding: 50px 20px 20px;
+  position: relative;
+}
+
+.farewell-ornament {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-accent-gold);
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+}
+
+.farewell-quote {
+  font-family: var(--font-script);
+  font-size: 2.6rem;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.farewell-names {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.copyright-note {
+  margin-top: 36px;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+/* --------------------------------------------------------------------------
+   11. Animações e Transições
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-element {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsividade Mobile-First
+   -------------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .top-nav {
+    padding: 8px 16px;
+  }
+
+  .nav-brand {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .main-content {
+    padding: 68px 12px 40px;
+    gap: 28px;
+  }
+
+  .invitation-card {
+    padding: 44px 22px 40px;
+  }
+
+  .card-frame {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .monogram-l {
+    width: 260px;
+    height: 260px;
+    top: -15px;
+    left: -15px;
+  }
+
+  .monogram-g {
+    width: 280px;
+    height: 280px;
+    bottom: -20px;
+    right: -20px;
+  }
+
+  .card-header-block {
+    padding-left: 0;
+    margin-bottom: 34px;
+  }
+
+  .invitation-eyebrow {
+    font-size: 0.82rem;
+    letter-spacing: 2.5px;
+    margin-bottom: 14px;
+  }
+
+  .couple-names .name-line {
+    font-size: 3.4rem;
+  }
+
+  .couple-names .ampersand {
+    font-size: 2.2rem;
+  }
+
+  .card-footer-block {
+    padding-right: 0;
+    margin-top: 14px;
+  }
+
+  .event-date-time {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .venue-title {
+    font-size: 0.95rem;
+    letter-spacing: 2.8px;
+    margin-bottom: 16px;
+  }
+
+  .invitation-closing {
+    font-size: 1.8rem;
+  }
+
+  .countdown-number {
+    font-size: 1.6rem;
+  }
+
+  .section-wrapper {
+    padding: 30px 18px;
+  }
+
+  .radio-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    font-size: 0.82rem;
+    padding: 14px;
+  }
+
+  .farewell-quote {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO e Metadados Principais -->
+  <title>Laura &amp; Guilherme | Convite de Casamento</title>
+  <meta name="description" content="Junte-se a nós para o nosso jantar de casamento. 24 de Novembro às 18h30 na Churrascaria Carro de Boi. Confirme sua presença online!" />
+  <meta name="author" content="Laura &amp; Guilherme" />
+  <meta name="theme-color" content="#efede7" />
+
+  <!-- Metadados Open Graph para WhatsApp e Redes Sociais -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Laura &amp; Guilherme | Convite de Casamento" />
+  <meta property="og:description" content="Junte-se a nós para o nosso jantar de casamento! 24/11 às 18h30. Clique para ver os detalhes e confirmar sua presença." />
+  <meta property="og:image" content="assets/favicon.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Tipografia do Google Fonts: Cormorant Garamond, Alex Brush e Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" 
+    rel="stylesheet" 
+  />
+
+  <!-- Estilos da Aplicação -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Barra Superior Fixa e Discreta -->
+  <header class="top-nav">
+    <a href="#" class="nav-brand">Laura &amp; Guilherme</a>
+    <nav class="nav-links">
+      <a href="#detalhes" class="nav-btn">Informações</a>
+      <a href="#rsvp" class="nav-btn primary">Confirmar Presença</a>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+
+    <!-- 1. CARTÃO DO CONVITE — RÉPLICA FIEL DO PDF -->
+    <section class="invitation-card-wrapper fade-in-element" aria-label="Convite de Casamento">
+      <div class="invitation-card">
+        
+        <!-- Moldura Clássica Passepartout -->
+        <div class="card-frame" aria-hidden="true"></div>
+
+        <!-- Monogramas Originais Vetoriais em Marca d'Água (Extraídos do PDF Original) -->
+        <img 
+          src="assets/monogram-L.svg" 
+          alt="" 
+          class="monogram-watermark monogram-l" 
+          aria-hidden="true" 
+        />
+        <img 
+          src="assets/monogram-G.svg" 
+          alt="" 
+          class="monogram-watermark monogram-g" 
+          aria-hidden="true" 
+        />
+
+        <!-- Conteúdo do Convite -->
+        <div class="card-content">
+          
+          <!-- Bloco Superior Direito (Idêntico ao PDF) -->
+          <div class="card-header-block">
+            <p class="invitation-eyebrow">
+              Junte-se a nós para o nosso<br />
+              jantar de casamento
+            </p>
+            <h1 class="couple-names">
+              <span class="name-line">Laura <span class="ampersand">&amp;</span></span>
+              <span class="name-line">Guilherme</span>
+            </h1>
+          </div>
+
+          <!-- Bloco Inferior Esquerdo (Idêntico ao PDF) -->
+          <div class="card-footer-block">
+            <p class="event-date-time">
+              24/11 <span class="date-time-bullet">•</span> 18h30
+            </p>
+            <h2 class="venue-title">
+              Churrascaria<br />
+              Carro de Boi
+            </h2>
+            <p class="invitation-closing">
+              Esperamos por você!
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões de Ação Rápida -->
+      <div class="quick-cta-bar">
+        <a href="#rsvp" class="btn-luxury gold">
+          <span>Confirmar Presença</span>
+        </a>
+        <a href="#detalhes" class="btn-luxury outline">
+          <span>Ver Detalhes</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. CRONÔMETRO REGRESSIVO -->
+    <section class="countdown-section fade-in-element" aria-label="Contagem Regressiva">
+      <h3 class="countdown-title">Contagem regressiva para o nosso encontro</h3>
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-days">00</div>
+          <span class="countdown-label">Dias</span>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-hours">00</div>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-minutes">00</div>
+          <span class="countdown-label">Min</span>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-seconds">00</div>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INFORMAÇÕES DETALHADAS DO EVENTO -->
+    <section id="detalhes" class="section-wrapper fade-in-element" aria-label="Detalhes do Evento">
+      <div class="section-header">
+        <span class="section-subtitle">Tudo sobre o evento</span>
+        <h2 class="section-title">Informações Importantes</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="details-grid">
+        
+        <!-- Card 1: Data e Horário -->
+        <article class="detail-card">
+          <div class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <h3 class="detail-card-title">Data &amp; Horário</h3>
+          <p class="detail-card-text">
+            <strong>24 de Novembro</strong><br />
+            Início pontual às <strong>18h30</strong>
+          </p>
+          <div class="detail-card-actions">
+            <a href="#" id="btn-add-gcal" class="btn-small dark" target="_blank" rel="noopener">
+              + Google Agenda
+            </a>
+            <a href="#" id="btn-add-ical" class="btn-small outline">
+              Apple / Outlook
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Localização -->
+        <article class="detail-card">
+          <div class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="detail-card-title">Local do Jantar</h3>
+          <p class="detail-card-text">
+            <strong>Churrascaria Carro de Boi</strong><br />
+            Ambiente reservado para celebração
+          </p>
+          <div class="detail-card-actions">
+            <a href="https://maps.app.goo.gl/qPtjUUcLbGxwZCNV7" id="btn-google-maps" class="btn-small dark" target="_blank" rel="noopener">
+              Google Maps
+            </a>
+            <a href="#" id="btn-waze" class="btn-small outline" target="_blank" rel="noopener">
+              Waze
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Informações de Valores da Churrascaria -->
+        <article class="detail-card pricing-card">
+          <div class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 class="detail-card-title">Valores do Jantar</h3>
+          
+          <div class="price-list">
+            <!-- Pacote Adulto -->
+            <div class="price-item">
+              <span class="price-item-title">Pacote Jantar</span>
+              <span class="price-item-tag">R$ 95,00 <small style="font-size: 0.72rem; font-weight: 400; color: var(--color-text-muted);">p/ pessoa</small></span>
+            </div>
+
+            <!-- Crianças 5 a 8 anos -->
+            <div class="price-item stacked">
+              <div class="price-item-header">
+                <span class="price-item-title">Crianças (5 a 8 anos)</span>
+              </div>
+              <div class="price-sub-options">
+                <div class="price-sub-row">
+                  <span>Sem bebida:</span>
+                  <strong>R$ 45,00</strong>
+                </div>
+                <div class="price-sub-row">
+                  <span>Com bebida:</span>
+                  <strong>R$ 60,00</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Incluso no Pacote -->
+            <div class="price-included-box">
+              <strong>Incluso no Pacote</strong>
+              Água, refrigerante e três tipos de suco
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. CONFIRMAÇÃO DE PRESENÇA (RSVP) -->
+    <section id="rsvp" class="section-wrapper fade-in-element" aria-label="Confirmação de Presença">
+      <div class="section-header">
+        <span class="section-subtitle">Sua presença é essencial</span>
+        <h2 class="section-title">Confirmação de Presença</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="rsvp-container">
+        
+        <p class="rsvp-intro">
+          Por favor, confirme sua presença para que possamos organizar todos os detalhes com muito carinho.
+        </p>
+
+        <!-- Formulário RSVP -->
+        <form id="rsvp-form" novalidate>
+          
+          <!-- Nome do Convidado -->
+          <div class="form-group">
+            <label for="guest-name" class="form-label">
+              Seu Nome Completo <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="guest-name" 
+              name="guest_name" 
+              class="form-input" 
+              placeholder="Digite seu nome completo" 
+              required 
+              autocomplete="name"
+            />
+          </div>
+
+          <!-- Confirmação de Presença -->
+          <div class="form-group">
+            <span class="form-label">
+              Você poderá comparecer? <span class="required">*</span>
+            </span>
+            <div class="radio-options-grid">
+              
+              <label class="radio-card">
+                <input type="radio" name="attendance" value="Sim" required />
+                <div class="radio-card-content">
+                  <span class="radio-icon">🥂</span>
+                  <span class="radio-title">Sim, com certeza!</span>
+                  <span class="radio-subtitle">Estarei presente para comemorar</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="attendance" value="Não" required />
+                <div class="radio-card-content">
+                  <span class="radio-icon">💌</span>
+                  <span class="radio-title">Não poderei ir</span>
+                  <span class="radio-subtitle">Infelizmente não poderei comparecer</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Acompanhantes (Exibido dinamicamente quando 'Sim' for selecionado) -->
+          <div id="companions-wrapper" class="companions-section" style="display: none;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="companions-count" class="form-label">
+                Quantos acompanhantes irão com você?
+              </label>
+              <select id="companions-count" name="companions_count" class="form-select">
+                <option value="0">Apenas eu (0 acompanhantes)</option>
+                <option value="1">1 acompanhante</option>
+                <option value="2">2 acompanhantes</option>
+                <option value="3">3 acompanhantes</option>
+                <option value="4">4 acompanhantes</option>
+              </select>
+            </div>
+
+            <!-- Campos Dinâmicos para Nomes dos Acompanhantes -->
+            <div id="companions-inputs-list"></div>
+          </div>
+
+          <!-- Observações e Mensagem -->
+          <div class="form-group">
+            <label for="guest-notes" class="form-label">
+              Mensagem ou Observações (Opcional)
+            </label>
+            <textarea 
+              id="guest-notes" 
+              name="guest_notes" 
+              class="form-textarea" 
+              rows="3" 
+              placeholder="Deixe uma mensagem carinhosa ou informe restrições alimentares..."
+            ></textarea>
+          </div>
+
+          <!-- Botão de Envio -->
+          <button type="submit" id="btn-submit-rsvp" class="btn-submit">
+            <span id="submit-spinner" class="spinner" aria-hidden="true"></span>
+            <span id="submit-text">Confirmar Presença</span>
+          </button>
+
+        </form>
+
+        <!-- Feedback de Sucesso ou Erro -->
+        <div id="rsvp-feedback" class="form-feedback" role="alert">
+          <h3 id="feedback-title" class="feedback-title"></h3>
+          <p id="feedback-text" class="feedback-text"></p>
+          <div id="feedback-note"></div>
+          <div class="feedback-actions" style="margin-top: 18px;">
+            <a href="#detalhes" class="btn-small dark">Ver Detalhes do Evento</a>
+            <button type="button" id="btn-feedback-retry" class="btn-small outline" style="background: none; cursor: pointer;">
+              Editar Resposta
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. ENCERRAMENTO AFETIVO -->
+    <footer class="footer-farewell fade-in-element">
+      <div class="farewell-ornament">✦ ✦ ✦</div>
+      <p class="farewell-quote">Esperamos por você!</p>
+      <p class="farewell-names">Laura &amp; Guilherme</p>
+      <p class="copyright-note">24/11 • Churrascaria Carro de Boi</p>
+    </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
