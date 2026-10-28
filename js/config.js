@@ -45,6 +45,16 @@ const WEDDING_CONFIG = {
     }
   },
 
+  // Dados para Presentes e Chave Pix
+  pix: {
+    message: "Caso deseje nos presentear, aqui disponibilizamos a chave Pix:",
+    keyDisplay: "117.374.344-82",
+    keyClean: "11737434482",
+    recipient: "Laura Roxana",
+    bank: "Banco do Brasil",
+    keyType: "CPF"
+  },
+
   // Regras de Confirmação de Presença (RSVP)
   rsvp: {
     deadlineDate: "10 de Novembro",

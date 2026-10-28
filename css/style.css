@@ -42,6 +42,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -120,6 +121,10 @@ body {
 .nav-btn.primary:hover {
   background-color: var(--color-accent-gold-dark);
   color: #fff;
+}
+
+.nav-short {
+  display: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -414,6 +419,7 @@ body {
   padding: 44px 36px;
   border: 1px solid rgba(222, 218, 208, 0.8);
   box-shadow: var(--card-shadow);
+  scroll-margin-top: 75px;
 }
 
 .section-header {
@@ -648,6 +654,204 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   8.5. Seção de Presentes e Chave Pix
+   -------------------------------------------------------------------------- */
+.pix-card-container {
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pix-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(222, 218, 208, 0.95);
+  border-radius: 12px;
+  padding: 34px 28px 28px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(52, 55, 51, 0.05);
+  transition: var(--transition-smooth);
+}
+
+.pix-card:hover {
+  background: #ffffff;
+  border-color: rgba(158, 138, 104, 0.45);
+  box-shadow: 0 12px 32px rgba(52, 55, 51, 0.08);
+}
+
+.pix-icon-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-accent-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--color-accent-gold-dark);
+}
+
+.pix-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-accent-gold-dark);
+}
+
+.pix-intro-message {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.pix-key-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.pix-key-box {
+  background: #ffffff;
+  border: 1.5px solid var(--color-accent-gold);
+  border-radius: 10px;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 10px rgba(158, 138, 104, 0.08);
+}
+
+.pix-key-box:hover {
+  background: #faf8f5;
+  border-color: var(--color-accent-gold-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(158, 138, 104, 0.16);
+}
+
+.pix-key-box:active {
+  transform: scale(0.99);
+}
+
+.pix-key-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.pix-key-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.pix-key-value {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: var(--color-text-main);
+  user-select: all;
+}
+
+.btn-copy-pix {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-text-main);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.btn-copy-pix:hover {
+  background: var(--color-accent-gold-dark);
+}
+
+.btn-copy-pix.copied {
+  background: var(--color-success) !important;
+  color: #ffffff !important;
+}
+
+.pix-toast {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--color-success);
+  font-weight: 600;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pix-toast.show {
+  display: flex !important;
+}
+
+.pix-toast svg {
+  stroke: var(--color-success);
+}
+
+.pix-beneficiary-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(239, 237, 231, 0.6);
+  border: 1px solid rgba(222, 218, 208, 0.9);
+  border-radius: 30px;
+  padding: 8px 22px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.pix-beneficiary-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.pix-beneficiary-label {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+}
+
+.pix-beneficiary-name {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.pix-beneficiary-separator {
+  color: var(--color-accent-gold);
+  font-size: 0.9rem;
+}
+
+.pix-disclaimer {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------------
    9. Formulário de Confirmação de Presença (RSVP)
    -------------------------------------------------------------------------- */
 .rsvp-container {
@@ -706,7 +910,7 @@ body {
   width: 100%;
   padding: 14px 16px;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 16px; /* Evita auto-zoom forçado no Safari iOS */
   color: var(--color-text-main);
   background: #ffffff;
   border: 1px solid var(--color-border-subtle);
@@ -948,25 +1152,51 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   12. Responsividade Mobile-First
+   12. Responsividade Mobile Refinada
    -------------------------------------------------------------------------- */
+
+/* Safe-areas e Ajustes Gerais para Telas Móveis e Tablets */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 72px 14px 40px;
+    gap: 32px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Telas de Smartphones (até 680px) */
 @media (max-width: 680px) {
+  /* Barra Superior Fixa */
   .top-nav {
-    padding: 8px 16px;
+    padding: 8px 12px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
   }
 
   .nav-brand {
-    font-size: 1rem;
-    letter-spacing: 1.5px;
+    font-size: 0.92rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
   }
 
-  .main-content {
-    padding: 68px 12px 40px;
-    gap: 28px;
+  .nav-links {
+    gap: 6px;
   }
 
+  .nav-btn {
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    padding: 6px 10px;
+  }
+
+  /* Cartão do Convite */
   .invitation-card {
-    padding: 44px 22px 40px;
+    padding: 42px 20px 36px;
   }
 
   .card-frame {
@@ -976,78 +1206,294 @@ body {
     bottom: 8px;
   }
 
+  .card-frame::after {
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+  }
+
+  /* Monogramas Vetoriais em Marca d'Água */
   .monogram-l {
-    width: 260px;
-    height: 260px;
+    width: clamp(210px, 60vw, 280px);
+    height: clamp(210px, 60vw, 280px);
     top: -15px;
     left: -15px;
   }
 
   .monogram-g {
-    width: 280px;
-    height: 280px;
+    width: clamp(230px, 64vw, 300px);
+    height: clamp(230px, 64vw, 300px);
     bottom: -20px;
     right: -20px;
   }
 
+  /* Bloco Superior (Nomes dos Noivos) */
   .card-header-block {
     padding-left: 0;
-    margin-bottom: 34px;
+    margin-bottom: 30px;
   }
 
   .invitation-eyebrow {
-    font-size: 0.82rem;
-    letter-spacing: 2.5px;
-    margin-bottom: 14px;
+    font-size: clamp(0.76rem, 2.7vw, 0.9rem);
+    letter-spacing: clamp(1.8px, 0.6vw, 2.8px);
+    margin-bottom: 12px;
   }
 
   .couple-names .name-line {
-    font-size: 3.4rem;
+    font-size: clamp(2.5rem, 9.2vw, 3.6rem);
+    word-break: normal;
   }
 
   .couple-names .ampersand {
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 6.2vw, 2.4rem);
+    margin-left: 4px;
   }
 
+  /* Bloco Inferior (Data e Local) */
   .card-footer-block {
     padding-right: 0;
     margin-top: 14px;
   }
 
   .event-date-time {
-    font-size: 1.4rem;
-    letter-spacing: 3px;
+    font-size: clamp(1.25rem, 4.2vw, 1.55rem);
+    letter-spacing: clamp(2.5px, 0.8vw, 3.8px);
     margin-bottom: 10px;
   }
 
   .venue-title {
-    font-size: 0.95rem;
-    letter-spacing: 2.8px;
-    margin-bottom: 16px;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    letter-spacing: clamp(2px, 0.7vw, 3.2px);
+    margin-bottom: 14px;
   }
 
   .invitation-closing {
-    font-size: 1.8rem;
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+  }
+
+  /* Botões Rápidos abaixo do convite */
+  .quick-cta-bar {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .btn-luxury {
+    font-size: 0.75rem;
+    padding: 11px 16px;
+    letter-spacing: 1px;
+    flex: 1 1 calc(50% - 10px);
+    min-height: 44px;
+    text-align: center;
+  }
+
+  /* Cronômetro Regressivo */
+  .countdown-section {
+    padding: 24px 14px;
+  }
+
+  .countdown-title {
+    font-size: clamp(0.85rem, 2.8vw, 1rem);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .countdown-grid {
+    gap: 6px;
+  }
+
+  .countdown-box {
+    padding: 10px 4px;
   }
 
   .countdown-number {
-    font-size: 1.6rem;
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
   }
 
+  .countdown-label {
+    font-size: clamp(0.58rem, 1.9vw, 0.68rem);
+    letter-spacing: 0.8px;
+  }
+
+  /* Seções de Conteúdo */
   .section-wrapper {
-    padding: 30px 18px;
+    padding: 30px 16px;
   }
 
+  .section-subtitle {
+    font-size: clamp(1.8rem, 6.2vw, 2.2rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.3rem, 4.4vw, 1.6rem);
+    letter-spacing: clamp(2px, 0.8vw, 3.5px);
+  }
+
+  /* Cards de Detalhes */
+  .detail-card {
+    padding: 24px 16px;
+  }
+
+  .detail-card-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-small {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 12px;
+  }
+
+  /* Card Pix */
+  .pix-card {
+    padding: 26px 16px 20px;
+  }
+
+  .pix-intro-message {
+    font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+  }
+
+  .pix-key-box {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .pix-key-value {
+    font-size: clamp(1.15rem, 4.6vw, 1.35rem);
+  }
+
+  .pix-beneficiary-card {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 14px;
+    gap: 12px;
+  }
+
+  /* Formulário RSVP */
   .radio-options-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .btn-submit {
-    font-size: 0.82rem;
-    padding: 14px;
+    font-size: 0.85rem;
+    padding: 15px;
+    min-height: 50px;
   }
 
   .farewell-quote {
-    font-size: 2rem;
+    font-size: clamp(1.9rem, 6.5vw, 2.4rem);
+  }
+
+  /* Efeito de toque refinado para mobile */
+  .btn-luxury:active,
+  .btn-small:active,
+  .btn-submit:active,
+  .btn-copy-pix:active,
+  .radio-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Telas Médias e Pequenas (Smartphones compactos até 480px) */
+@media (max-width: 480px) {
+  .nav-full {
+    display: none;
+  }
+  .nav-short {
+    display: inline;
+  }
+
+  .main-content {
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+  }
+
+  .invitation-card {
+    padding: 36px 16px 30px;
+  }
+
+  .card-frame {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .btn-luxury {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .pix-key-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .pix-key-info {
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .btn-copy-pix {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 0.8rem;
+  }
+
+  .pix-beneficiary-card {
+    flex-direction: column;
+    border-radius: 12px;
+    gap: 4px;
+    padding: 10px 14px;
+  }
+
+  .pix-beneficiary-separator {
+    display: none;
+  }
+}
+
+/* Telas Ultra-Compactas (ex: iPhone SE, Galaxy Fold tela externa, até 360px) */
+@media (max-width: 360px) {
+  .top-nav {
+    padding: 6px 8px;
+  }
+
+  .nav-brand {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-btn {
+    padding: 4px 7px;
+    font-size: 0.65rem;
+  }
+
+  .invitation-card {
+    padding: 30px 12px 26px;
+  }
+
+  .countdown-grid {
+    gap: 4px;
+  }
+
+  .countdown-box {
+    padding: 8px 2px;
+  }
+
+  .detail-card-actions .btn-small {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }

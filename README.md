@@ -29,21 +29,30 @@ O projeto foi construído respeitando as características do documento original:
   - Pacote Jantar: **R$ 95,00** por pessoa
   - Crianças (5 a 8 anos): **R$ 45,00** (sem bebida) | **R$ 60,00** (com bebida)
   - Incluso no Pacote: Água, refrigerante e três tipos de suco
+- **Presentes / Chave Pix**:
+  - *Mensagem*: "Caso deseje nos presentear, aqui disponibilizamos a chave Pix:"
+  - *Chave Pix (CPF)*: `117.374.344-82`
+  - *Titular*: Laura Roxana
+  - *Instituição*: Banco do Brasil
 - **Mensagem de Fechamento**: Esperamos por você!
 
-*Nota: Todas as informações e links estão centralizados de forma modular no arquivo [`js/config.js`](js/config.js) para fácil personalização.*
+*Nota: Todas as informações, chave Pix e links estão centralizados de forma modular no arquivo [`js/config.js`](js/config.js) para fácil personalização.*
 
 ---
 
 ## 🚀 Funcionalidades
 
-1. **Design Mobile-First**: Perfeito para visualização no WhatsApp, Instagram e qualquer tamanho de tela de smartphone, tablet ou desktop.
-2. **Cronômetro Regressivo Dinâmico**: Contagem regressiva em tempo real até o momento do evento.
-3. **Integração com Calendários**:
+1. **Design Mobile-First Refinado**: Otimizado com tipografia fluida (`clamp()`), safe-areas para entalhes de tela (`env(safe-area-inset)`), prevenção de zoom forçado no iOS Safari (`font-size: 16px` em inputs), alinhamentos perfeitamente adaptados para telas estreitas (320px, 360px, 390px e além) e navegação compacta.
+2. **Presentes &amp; Chave Pix com Cópia Rápida**:
+   - Card elegante e minimalista com a mensagem e dados bancários completos.
+   - Botão interativo "Copiar Chave" com feedback visual instantâneo ("✓ Chave Copiada!").
+   - Compatibilidade total com a área de transferência em dispositivos Android e iOS.
+3. **Cronômetro Regressivo Dinâmico**: Contagem regressiva em tempo real até o momento do evento.
+4. **Integração com Calendários**:
    - Botão para adicionar direto ao **Google Agenda**.
    - Download de arquivo `.ics` para **Apple Calendar (iPhone/Mac)** e **Outlook**.
-4. **Navegação GPS**: Links diretos para rotas no **Google Maps** e **Waze**.
-5. **Formulário de RSVP Inteligente**:
+5. **Navegação GPS**: Links diretos para rotas no **Google Maps** e **Waze**.
+6. **Formulário de RSVP Inteligente**:
    - Confirmação "Sim, estarei presente!" ou "Não poderei ir".
    - Seletor de quantidade de acompanhantes (com campos de texto dinâmicos para o nome completo de cada acompanhante).
    - Campo para mensagens carinhosas e restrições alimentares.

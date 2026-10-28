@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. Inicializa os links de calendário (Google Calendar e iCal)
   initCalendarLinks(config);
 
-  // 4. Inicializa o formulário RSVP
+  // 4. Inicializa o botão de cópia da chave Pix
+  initPixCopy(config);
+
+  // 5. Inicializa o formulário RSVP
   initRsvpForm(config);
 });
 
@@ -143,6 +146,78 @@ function downloadIcsFile({ title, description, location, startDate, endDate }) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+/**
+ * Função Global para Copiar a Chave Pix com Feedback Visual Instantâneo
+ */
+window.copyPixKey = function (event) {
+  if (event && event.stopPropagation) event.stopPropagation();
+
+  const config = window.WEDDING_CONFIG || {};
+  const pixKey = config.pix?.keyDisplay || "117.374.344-82";
+  const copyBtn = document.getElementById("btn-copy-pix");
+  const copyText = document.getElementById("copy-btn-text");
+  const toast = document.getElementById("pix-toast");
+
+  // 1. Feedback visual imediato e responsivo (Optimistic UI)
+  if (copyBtn) copyBtn.classList.add("copied");
+  if (copyText) copyText.textContent = "✓ Chave Copiada!";
+  if (toast) toast.classList.add("show");
+
+  clearTimeout(window._pixCopyTimeout);
+  window._pixCopyTimeout = setTimeout(() => {
+    if (copyBtn) copyBtn.classList.remove("copied");
+    if (copyText) copyText.textContent = "Copiar Chave";
+    if (toast) toast.classList.remove("show");
+  }, 3500);
+
+  // 2. Cópia segura para a área de transferência
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(pixKey).catch(() => fallbackCopy(pixKey));
+  } else {
+    fallbackCopy(pixKey);
+  }
+};
+
+function fallbackCopy(text) {
+  try {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    const res = document.execCommand("copy");
+    document.body.removeChild(textArea);
+    return res;
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Inicialização de Eventos da Chave Pix
+ */
+function initPixCopy(config) {
+  const copyBox = document.getElementById("pix-copy-box");
+  const copyBtn = document.getElementById("btn-copy-pix");
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", (e) => window.copyPixKey(e));
+  }
+
+  if (copyBox) {
+    copyBox.addEventListener("click", (e) => window.copyPixKey(e));
+    copyBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        window.copyPixKey(e);
+      }
+    });
+  }
 }
 
 /**
